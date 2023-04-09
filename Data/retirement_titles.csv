@@ -1,0 +1,44 @@
+"QUERY PLAN"
+"[
+  {
+    ""Plan"": {
+      ""Node Type"": ""Sort"",
+      ""Parallel Aware"": false,
+      ""Sort Key"": [""e.emp_no""],
+      ""Plans"": [
+        {
+          ""Node Type"": ""Hash Join"",
+          ""Parent Relationship"": ""Outer"",
+          ""Parallel Aware"": false,
+          ""Join Type"": ""Inner"",
+          ""Inner Unique"": true,
+          ""Hash Cond"": ""(t.emp_no = e.emp_no)"",
+          ""Plans"": [
+            {
+              ""Node Type"": ""Seq Scan"",
+              ""Parent Relationship"": ""Outer"",
+              ""Parallel Aware"": false,
+              ""Relation Name"": ""titles"",
+              ""Alias"": ""t""
+            },
+            {
+              ""Node Type"": ""Hash"",
+              ""Parent Relationship"": ""Inner"",
+              ""Parallel Aware"": false,
+              ""Plans"": [
+                {
+                  ""Node Type"": ""Seq Scan"",
+                  ""Parent Relationship"": ""Outer"",
+                  ""Parallel Aware"": false,
+                  ""Relation Name"": ""employees"",
+                  ""Alias"": ""e"",
+                  ""Filter"": ""((birth_date >= '1952-01-01'::date) AND (birth_date <= '1955-12-31'::date))""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]"
